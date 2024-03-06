@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <img src="{% static 'images/blogger-logo.png' %}" alt="" width="40px">
+              <a class="navbar-brand" href="#">مدونة</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Home' %}">الرئيسية</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'About' %}">من أنا</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">دوراتي</a>
+                  </li>  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">تسجيل</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">دخول</a></li>
+                      <li><a class="dropdown-item" href="#">تسجيل جديد</a></li>
+                      <li><a class="dropdown-item" href="#">A third link</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <ul class="navbar-nav mr-auto">
+                <i class="nav-link" href="#">تسجيل</i>
+                <i class="nav-link" href="#">تسجيل دخول</i>
+            </ul>
+            </div>
+          </nav>
+    </header>
+</body>
+</html>

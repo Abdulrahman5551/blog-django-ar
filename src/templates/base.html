@@ -1,0 +1,53 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css'%}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% if title %} {{ title }} {% else %}  مدونة{% endif %}</title>
+</head>
+<body>
+
+    {% include 'parts/navbar.html' %}
+    <section>
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    {% block content %}
+                    
+                    {% endblock content %}
+                </div>
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <h3 class="text-center bg-secondary text-light p-2">
+                                أخر التدوينات
+                            </h3>
+
+                            {% include 'blog/latest_posts.html' %}
+                        </div>
+                        <div class="card mb-3">
+                            <h3 class="text-center bg-secondary text-light p-2">
+                                أخر التعليقات
+                            </h3>
+                            {% include 'blog/latest_comments.html' %}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+{% include 'parts/footer.html' %}
+
+
+<script src="{% static 'blog/js/jquery-3.7.1.slim.min.js' %}"></script>
+<script src="{% static 'blog/js/fontawesome-all.min.js' %}"></script>
+<script src="{% static 'blog/js/popper.min.js' %}"></script>
+</body>
+</html>

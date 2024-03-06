@@ -1,0 +1,9 @@
+<ul class="list-group list-group-flush" style="padding-right: 0%;">
+    {% for comment in comments %}
+    <li class="list-group-item">
+        <a class="btn" href="{% url 'detail' comment.post.id %}">
+            {{ comment.body }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

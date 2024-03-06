@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="card bg-light text-dark mb-2 mt-4">
+        <img class="rounded mt-2" src="{% static 'images/profile.png' %}" alt="Card image" width="110px" style="padding-right: 2%;">
+        <small class="mt-2" style="padding-right: 2%;">نشر في: {{ post.post_date|date:"D d M Y"}}</small>
+        <p style="padding-right: 2%;">بواسطة: {{post.author}}</p>
+        <div class="card-body">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+        </div>
+      </div>
+
+      <div>
+        <h1> التعليقات ({{comments.count}})</h1>
+        {% if comments %}
+            {% for comment in comments %}
+            <div class="card mb-4">
+                <div class="card-body bg-primary text-white p-4">
+                    <div class="d-flex flex-row align-items-center">
+                        <small>علق {{ comment.name}} في: {{ comment.comment_date|date:"D d M Y"}}</small>
+                    </div>
+                    <hr>
+                    <p class="h5 mt-2">{{ comment.body }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <h6 style="padding-right: 10%;">  لايوجد تعليقات </h6>
+        {% endif %}
+      </div>
+      <div class="border p-3 mt-3">
+      <h3 class=" pb-3 mb-3 mt-3">إضافة تعليق جديد</h3>
+      <form method="POST">
+            {% csrf_token %}
+            {{ comment_form|crispy }}
+
+            <input class="btn btn-secondary" type="submit" value="نشر التعليق">
+        </form>
+    </div>
+{% endblock content %}
